@@ -2,7 +2,12 @@
 
 Este proyecto es un ecommerce de productos varios, es posible filtrar por categorías, seleccionar un producto para ver sus detalles, posee un carrito de compras en el cual se pueden agregar o quitar productos y un checkout en el cual el usuario puede cargar sus datos para finalizar la compra. Los productos y la información de compras están almacenadas en una base de datos.
 
+instalación:
+- npm create vite@latest
+- npm run dev
+
 Dependencias:
+- node@21.2.0 [https://nodejs.org/en]
 - react@18.2.0 [https://www.npmjs.com/package/react]
 - react-dom@18.2.0 [https://www.npmjs.com/package/react-router-dom]
 - react-router-dom@6.21.1 [https://www.npmjs.com/package/react-router-dom]
