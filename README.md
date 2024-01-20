@@ -1,6 +1,6 @@
 # Trendy Tech
 
-Este proyecto es un ecommerce de productos varios, es posible filtrar por categorías, seleccionar un producto para ver sus detalles, posee un carrito de compras en el cual se pueden agregar o quitar productos y un checkout en el cual el usuario puede cargar sus datos para finalizar la compra. Los productos y la información de compras están almacenadas en una base de datos.
+Este proyecto es un ecommerce de productos de tecnología y otros, en este sitio es posible filtrar por categorías, seleccionar un producto para ver sus detalles, posee un carrito de compras en el cual se pueden agregar o quitar productos y un checkout en el cual el usuario puede cargar sus datos para finalizar la compra. Los productos y la información de compras están almacenadas en una base de datos.
 
 instalación:
 - npm create vite@latest
@@ -16,3 +16,4 @@ Dependencias:
 - react-toastify@10.0.3 [https://www.npmjs.com/package/react-toastify]
 - firebase@10.7.2 [https://firebase.google.com/]
 
+Fue creado como entrega del curso de CoderHouse React Js.
