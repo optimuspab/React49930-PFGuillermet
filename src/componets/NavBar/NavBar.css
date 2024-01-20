@@ -1,0 +1,58 @@
+#navbar {
+  display: flex;
+  background-color: #333;
+  height: 80px;
+}
+
+.cartwidget-container {
+  display: flex;
+}
+
+#cart-widget {
+  align-self: center;
+  flex: auto;
+}
+
+#cart-widget a {
+  color: white;
+  size: 60px;
+  float: right;
+  margin-right: 5%;
+  text-decoration: none;
+}
+
+#navbar .navbar-brand img {
+  max-width: 100px;
+  height: auto;
+}
+
+#navbar .navbar-brand a:hover {
+  background-color: #111;
+}
+
+#navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  align-self: center;
+}
+
+#navbar ul li {
+  display: inline-flex;
+  vertical-align: -webkit-baseline-middle;
+}
+
+#navbar ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+#navbar ul li a:hover {
+  background-color: #111;
+}
