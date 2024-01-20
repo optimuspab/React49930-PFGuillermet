@@ -1,6 +1,7 @@
 import CartWidget from "./CartWidget";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const brandStyle = {
     alignSelf: 'center',
@@ -8,9 +9,14 @@ const brandStyle = {
 
 const NavBar = () => {
 
+    const [isMenuOpen, setIsMenuOpen] = useState(false);  // Estado para rastrear si el menú está abierto
+
     const toggleMenu = () => {
-        const menu = document.getElementById('navbar').getElementsByTagName('ul')[0];
-        menu.classList.toggle('show');
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
     };
 
     return (
@@ -19,7 +25,7 @@ const NavBar = () => {
                 <img src="/tt_logo_white.png" alt="Trendy Tech Logo" className="logo"></img>
             </Link>
             <div id="menu-icon" onClick={toggleMenu}>&#9776;</div>
-            <ul>
+            <ul className={isMenuOpen ? 'show' : ''} onClick={closeMenu}>
                 <li>
                     <Link to="/categorias/smartphones">Smartphones</Link>
                 </li>
