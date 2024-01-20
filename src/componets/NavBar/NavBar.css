@@ -52,7 +52,44 @@
   text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
 #navbar ul li a:hover {
   background-color: #111;
+}
+
+/*responsive menu*/
+
+/* ... (otros estilos existentes) */
+
+#menu-icon {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+@media only screen and (max-width: 1020px) {
+  #navbar ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+  }
+
+  #navbar ul.show {
+    display: flex;
+    background-color: rgba(51, 51, 51, 0.7);
+  }
+
+  #navbar ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  #navbar #menu-icon {
+    display: block;
+    align-self: center;
+  }
 }

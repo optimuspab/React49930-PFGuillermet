@@ -1,30 +1,36 @@
 import { useEffect, useState } from "react";
-import obtenerProductos from "../utils/asyncMock";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
+import { doc, getDoc } from "firebase/firestore";
+import db from "../../db/db";
 
 const ItemDetailContainer = () => {
-  const [product, setProducto] = useState({})
-  const { id } = useParams()
+  const [product, setProduct] = useState({});
+  const [productExists, setProductExists] = useState(false);
+  const { id } = useParams();
 
   useEffect(() => {
+    const productRef = doc(db, "products", id);
+    getDoc(productRef).then((respuesta) => {
+      const productoDb = { id: respuesta.id, ...respuesta.data() };
 
-    obtenerProductos
-      .then((respuesta) => {
-        const productoEncontrado = respuesta.find((prod) => prod.id.toString() === id);
-        setProducto(productoEncontrado);        
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+      if (!respuesta.exists()) {
+        setProductExists(true);
+      }
+      setProduct(productoDb);
+    });
 
-  }, [])
+  }, [id])
 
   return (
     <div>
-      <ItemDetail product={product} />
+      {productExists ? (
+        <div>El producto no existe 😵</div>
+      ) : (
+        <ItemDetail product={product} />
+      )}
     </div>
-  )
-}
+  );
+};
 export default ItemDetailContainer
 

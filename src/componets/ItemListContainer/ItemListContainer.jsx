@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
-import getProducts from "../utils/asyncMock";
 import ItemList from "../ItemList/ItemList";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import db from "../../db/db";
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([]);
@@ -13,23 +14,25 @@ const ItemListContainer = ({ greeting }) => {
     useEffect(() => {
         setLoading(true);
 
-        getProducts
-            .then((respuesta) => {
-                if (categoria) {
-                    const filteredProducts = respuesta.filter(
-                        (product) => product.category === categoria
-                    );
-                    setProducts(filteredProducts);
-                } else {
-                    setProducts(respuesta);
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+        let consulta
+        const productsRef = collection(db, "products");
+    
+        if(categoria){
+          consulta = query(productsRef, where("category", "==", categoria))
+        }else{
+          consulta = productsRef
+        }
+    
+        getDocs(consulta)
+          .then((respuesta) => {
+          let productsDb = respuesta.docs.map((product) => {
+            return { id: product.id, ...product.data() };
+          });
+          setProducts(productsDb)
+        })
+        .catch((error)=> console.log(error))
+        .finally(()=> setLoading(false))
+
     }, [categoria]);
 
     return (

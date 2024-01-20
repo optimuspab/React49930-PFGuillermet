@@ -7,11 +7,18 @@ const brandStyle = {
 };
 
 const NavBar = () => {
+
+    const toggleMenu = () => {
+        const menu = document.getElementById('navbar').getElementsByTagName('ul')[0];
+        menu.classList.toggle('show');
+    };
+
     return (
         <div id="navbar">
             <Link to="/" className="navbar-brand" style={brandStyle}>
                 <img src="/tt_logo_white.png" alt="Trendy Tech Logo" className="logo"></img>
             </Link>
+            <div id="menu-icon" onClick={toggleMenu}>&#9776;</div>
             <ul>
                 <li>
                     <Link to="/categorias/smartphones">Smartphones</Link>
@@ -33,7 +40,7 @@ const NavBar = () => {
                 </li>
             </ul>
             <div id="cart-widget">
-                <a className="active" href="#contact"><CartWidget/></a>
+                <a className="active" href="#contact"><CartWidget /></a>
             </div>
         </div>
     )

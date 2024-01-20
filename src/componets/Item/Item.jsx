@@ -24,6 +24,7 @@ const Item = ({ product }) => {
             <img className="image" src={product.thumbnail} alt={product.title}></img>
             <p className="titulo">{product.title}</p>
             <p className="precio">{product.price}</p>
+            <p>⭐{product.rating}</p>
             <Link to={`/detalle/${product.id}`} className="link">Ver detalles</Link>
         </div>
     )

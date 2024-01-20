@@ -21,6 +21,7 @@ const ItemDetail = ({ product }) => {
         <h2>{product.title}</h2>
         <p>{product.description}</p>
         <p>${product.price}</p>
+        <p>⭐{product.rating}</p>
         {
           toggle ? (
             <>
